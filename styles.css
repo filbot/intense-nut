@@ -1,0 +1,187 @@
+body {
+  background-color: #ffad73;
+  color: #222;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  margin: 0 1rem;
+}
+
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+  font-family: 'Bebas Neue', cursive;
+  text-transform: uppercase;
+}
+
+.tools {
+  min-width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'product-photo product-photo product-photo product-name product-name'
+    'product-photo product-photo product-photo taste-profile flavor-intensity'
+    'product-photo product-photo product-photo quantity price'
+    'product-photo product-photo product-photo add-to-cart-cta add-to-cart-cta';
+}
+.product-photo {
+  grid-area: product-photo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
+.product-name {
+  grid-area: product-name;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+
+.nut-type {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+}
+
+.nut-name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 38px;
+  margin-bottom: 1rem;
+}
+
+.nut-description {
+}
+
+.taste-profile .sub-text {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.taste-profile .taste-description {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+}
+
+.taste-profile {
+  grid-area: taste-profile;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+.flavor-intensity {
+  grid-area: flavor-intensity;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+
+.flavor-intensity .intensity-sub-text {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.flavor-intensity .intensity-description {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+}
+
+.quantity {
+  grid-area: quantity;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+
+.quantity .amount {
+  font-size: 24px;
+}
+
+.quantity .amount .number,
+.quantity .amount .bags {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+}
+
+.quantity .package-size {
+  font-size: 12px;
+}
+
+.price {
+  grid-area: price;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+
+.price .total-price {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+}
+
+.price .price-per {
+  font-size: 12px;
+}
+
+.add-to-cart-cta {
+  grid-area: add-to-cart-cta;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3rem;
+}
+
+.cart-cta {
+  width: 80%;
+  padding: 1rem 0;
+  background-color: #222;
+  color: #ffad73;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.more-details-cta {
+  width: 80%;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.product-photo img {
+  width: 60%;
+}
