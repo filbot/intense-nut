@@ -1,6 +1,6 @@
 body {
-  background-color: #ffad73;
-  color: #222;
+  background-color: #eeeeee;
+  color: #222831;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -78,6 +78,7 @@ header {
 .taste-profile .sub-text {
   text-transform: uppercase;
   font-size: 10px;
+  color: #393e46;
 }
 
 .taste-profile .taste-description {
@@ -106,6 +107,7 @@ header {
 .flavor-intensity .intensity-sub-text {
   text-transform: uppercase;
   font-size: 10px;
+  color: #393e46;
 }
 
 .flavor-intensity .intensity-description {
@@ -135,7 +137,8 @@ header {
 }
 
 .quantity .package-size {
-  font-size: 12px;
+  font-size: 10px;
+  color: #393e46;
 }
 
 .price {
@@ -154,7 +157,8 @@ header {
 }
 
 .price .price-per {
-  font-size: 12px;
+  font-size: 10px;
+  color: #393e46;
 }
 
 .add-to-cart-cta {
@@ -169,8 +173,8 @@ header {
 .cart-cta {
   width: 80%;
   padding: 1rem 0;
-  background-color: #222;
-  color: #ffad73;
+  background-color: #d72323;
+  color: #eeeeee;
   text-transform: uppercase;
   text-align: center;
 }
