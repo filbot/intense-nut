@@ -1,191 +1,366 @@
+/* Intense Nut: palette, layout, type. Flavor colors live on [data-flavor],
+   which matches both <body> (page field) and each .card (its own ink). */
+
+/* --band is the graphic in the label's top and bottom rule. One gradient each,
+   picked to match the flavor: slow smoke, wok heat, volcanic grit. */
+
+[data-flavor="cashew"] {
+  --field: #F2B8B0; --accent: #E0562A; --deep: #AC3A12;
+  --band: repeating-linear-gradient(90deg, var(--ink) 0 16px, transparent 16px 28px)
+          center / 100% 2px no-repeat;
+}
+[data-flavor="peanut"] {
+  --field: #C9CDA9; --accent: #6E8B1F; --deep: #4A6314;
+  --band: repeating-linear-gradient(115deg, var(--ink) 0 1.5px, transparent 1.5px 8px)
+          center / 100% 8px no-repeat;
+}
+[data-flavor="macadamia"] {
+  --field: #F3D98B; --accent: #C96F17; --deep: #8F4B0A;
+  --band: radial-gradient(circle, var(--ink) 0 1.6px, transparent 1.7px)
+          0 center / 9px 8px repeat-x;
+}
+
+:root {
+  --ink: #1F1D1A;
+  --paper: #F1EBDD;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: 'Pirata One', 'Papyrus', fantasy, serif;
+  --sans: 'DM Sans', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+* { box-sizing: border-box; }
+/* icons.js is deferred, so reserve each icon's box or the grid reflows on upgrade */
+in-icon { display: block; }
+in-icon[size="32"] { width: 32px; height: 32px; }
+in-icon[size="44"] { width: 44px; height: 44px; }
+in-icon[size="104"] { width: 104px; height: 104px; }
+
 body {
-  background-color: #eeeeee;
-  color: #222831;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-header {
+  margin: 0;
+  min-height: 100vh;
+  padding: 28px 20px 64px;
+  background: var(--field);
+  transition: background 0.35s;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  height: 80px;
-  margin: 0 1rem;
+  gap: 28px;
 }
 
-.logo {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 2rem;
+a { color: var(--deep); }
+a:hover { color: var(--ink); }
+::selection { background: var(--paper); }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.menu {
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 20px;
+  top: 20px;
+  z-index: 1;
+  background: var(--paper);
+  padding: 8px 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+/* ---- nav ---- */
+
+.nav {
+  width: 100%;
+  max-width: 1160px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 30%;
-  font-family: 'Bebas Neue', cursive;
-  text-transform: uppercase;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
 }
 
-.tools {
-  min-width: 100px;
+.flavors {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.container {
-  height: 100%;
+.flavor-tab {
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 2px 0;
+  color: var(--ink);
+}
+.flavor-tab:hover { opacity: 0.7; }
+.flavor-tab[aria-pressed="true"] {
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+
+.cart {
+  margin-left: auto;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  color: var(--ink);
+}
+.cart[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot);
+  border: 1px solid var(--ink);
+}
+
+/* ---- card ---- */
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 1160px;
+  background: var(--paper);
+  box-shadow: 0 24px 60px rgba(31, 29, 26, 0.22);
+  padding: 18px 40px 24px;
+}
+
+/* the die-cut rules at the top and bottom of the label */
+.rule-top i, .rule-bottom i { display: block; border-top: 2px solid var(--ink); }
+.rule-top i.thin, .rule-bottom i.thin { border-top-width: 1px; }
+.rule-top i.perf, .rule-bottom i.perf {
+  border: none;
+  height: 8px;
+  margin: 2px 0;
+  background: var(--band);
+}
+
+.columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    'product-photo product-photo product-photo product-name product-name'
-    'product-photo product-photo product-photo taste-profile flavor-intensity'
-    'product-photo product-photo product-photo quantity price'
-    'product-photo product-photo product-photo add-to-cart-cta add-to-cart-cta';
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 44px;
+  padding: 40px 4px;
 }
-.product-photo {
-  grid-area: product-photo;
+
+.columns section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem;
+  flex-direction: column;
+  gap: 18px;
 }
+
+h1, h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  margin: 0;
+}
+h2 { font-size: 30px; line-height: 1.1; }
+h1 { font-size: 58px; line-height: 1; }
+
+p { margin: 0; line-height: 1.8; }
+.deep { color: var(--deep); }
+
+hr {
+  border: none;
+  border-top: 1px dashed var(--ink);
+  margin: 6px 0;
+  width: 100%;
+}
+
+/* ---- left column ---- */
+
+.col-left h2 { max-width: 220px; }
+
+/* ---- center column ---- */
+
+.col-center {
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
 .product-name {
-  grid-area: product-name;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3rem;
-}
-
-.nut-type {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 16px;
-}
-
-.nut-name {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 38px;
-  margin-bottom: 1rem;
-}
-
-.nut-description {
-}
-
-.taste-profile .sub-text {
-  text-transform: uppercase;
-  font-size: 10px;
-  color: #393e46;
-}
-
-.taste-profile .taste-description {
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px;
-}
-
-.taste-profile {
-  grid-area: taste-profile;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3rem;
-}
-.flavor-intensity {
-  grid-area: flavor-intensity;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3rem;
-}
-
-.flavor-intensity .intensity-sub-text {
-  text-transform: uppercase;
-  font-size: 10px;
-  color: #393e46;
-}
-
-.flavor-intensity .intensity-description {
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px;
-}
-
-.quantity {
-  grid-area: quantity;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 3rem;
-}
-
-.quantity .amount {
+  font-family: var(--sans);
+  font-weight: 500;
   font-size: 24px;
+  color: var(--accent);
 }
 
-.quantity .amount .number,
-.quantity .amount .bags {
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px;
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
 }
 
-.quantity .package-size {
-  font-size: 10px;
-  color: #393e46;
+.vert {
+  writing-mode: vertical-rl;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--deep);
+}
+.vert-flip { transform: rotate(180deg); }
+
+.hero-wrap { position: relative; }
+
+.hero {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--field);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero img {
+  width: 88%;
+  height: auto;
+  display: block;
+}
+.hero-wrap .badge {
+  position: absolute;
+  top: -14px;
+  right: -4px;
 }
 
-.price {
-  grid-area: price;
+.net-wt {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-top: 18px;
+}
+
+.cta {
+  margin-top: 10px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 2px dashed var(--accent);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--mono);
+  color: var(--ink);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 0 3rem;
+  justify-content: center;
+  gap: 4px;
+  transform: rotate(-8deg);
+  transition: transform 0.15s, background 0.15s;
 }
-
-.price .total-price {
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px;
+.cta:hover {
+  transform: rotate(0deg) scale(1.04);
+  background: rgba(31, 29, 26, 0.04);
 }
-
-.price .price-per {
-  font-size: 10px;
-  color: #393e46;
+.cta-label { font-size: 10px; letter-spacing: 0.2em; }
+.cta-price {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--deep);
 }
+.cta-unit { font-size: 9px; letter-spacing: 0.16em; }
 
-.add-to-cart-cta {
-  grid-area: add-to-cart-cta;
+/* ---- right column ---- */
+
+.goods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.goods li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 0 3rem;
+  gap: 8px;
+  text-align: center;
+}
+.goods span {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--deep);
 }
 
-.cart-cta {
-  width: 80%;
-  padding: 1rem 0;
-  background-color: #d72323;
-  color: #eeeeee;
-  text-transform: uppercase;
+.also, .social-line { font-size: 12px; }
+.also strong { font-weight: 600; }
+
+.social { display: flex; gap: 14px; }
+.social a { line-height: 0; }
+
+/* ---- footer ---- */
+
+footer {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  opacity: 0.75;
   text-align: center;
 }
 
-.more-details-cta {
-  width: 80%;
-  padding: 1rem 0;
-  text-transform: uppercase;
-  text-align: center;
+/* ---- mobile: one column, product first ---- */
+
+@media (max-width: 900px) {
+  .card { max-width: 460px; padding: 18px 24px 24px; }
+  .nav { max-width: 460px; }
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .col-center { order: 1; }
+  .col-left { order: 2; }
+  .col-right { order: 3; }
+
+  h1 { font-size: 46px; }
+  .hero-row { gap: 10px; }
+  .hero { width: 220px; height: 220px; }
+  .hero-wrap .badge { top: -4px; right: 2px; transform: scale(0.75); }
 }
 
-.product-photo img {
-  width: 60%;
+/* Below this the three tabs and the cart can no longer share a line (they need
+   351px and a 390px phone offers 350). The tabs take the row and spread across
+   it; the cart drops beneath, still right-aligned to the card edge. */
+
+@media (max-width: 480px) {
+  .nav { gap: 10px 0; }
+  .flavors {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .cta:hover { transform: rotate(-8deg); }
 }

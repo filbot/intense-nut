@@ -1,75 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" type="image/png" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <title>Intense Nut</title>
-  </head>
-  <body>
-    <header>
-      <div class="logo">Intense Nut</div>
-      <div class="menu">
-        <div class="menu-item">Nuts</div>
-        <div class="menu-item">Accessories</div>
-        <div class="menu-item">Symptoms</div>
-        <div class="menu-item">Subscribe</div>
-        <div class="menu-item">About</div>
-      </div>
-      <div class="tools">
-        <div class="search">
-          <img src="assets/search-24px.svg" alt="search" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intense Nut: Nuts With a Temper</title>
+<meta name="description" content="Small-batch roasted nuts from Seattle, Washington. Chipotle cashews, Thai peanuts and island fire macadamias, made by people who consider 'mild' a personality flaw.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Intense Nut: Nuts With a Temper">
+<meta property="og:description" content="Small-batch roasted nuts from Seattle, Washington. From tree to tin.">
+<meta property="og:image" content="assets/cashew.png">
+<meta name="theme-color" content="#F2B8B0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="icons.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body data-flavor="cashew">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="flavors" role="group" aria-label="Choose a flavor">
+    <button type="button" class="flavor-tab" data-flavor="cashew" aria-pressed="true"><span class="dot" style="--dot:#F2B8B0"></span>CASHEW</button>
+    <button type="button" class="flavor-tab" data-flavor="peanut" aria-pressed="false"><span class="dot" style="--dot:#C9CDA9"></span>PEANUT</button>
+    <button type="button" class="flavor-tab" data-flavor="macadamia" aria-pressed="false"><span class="dot" style="--dot:#F3D98B"></span>MACADAMIA</button>
+  </div>
+  <button type="button" class="cart" disabled title="Cart coming soon">CART (<span class="cart-count">0</span>)</button>
+</nav>
+
+<main id="main">
+
+  <article class="card" data-flavor="cashew">
+    <div class="rule-top" aria-hidden="true"><i></i><i class="perf"></i><i class="thin"></i></div>
+    <div class="columns">
+
+      <section class="col-left">
+        <h2>The Slow-Smoked Snack</h2>
+        <p>We'll spare you the marketing fluff and hand you the important stuff. Whole cashews, roasted until they crack, then tumbled in smoked chipotle, raw honey and enough sea salt to keep you honest. The heat builds. No dust at the bottom of the tin, ever.</p>
+        <p class="deep">Made in small batches by people who consider 'mild' a personality flaw.</p>
+      </section>
+
+      <section class="col-center">
+        <h1>Intense Nut</h1>
+        <p class="product-name">Chipotle Cashew</p>
+        <div class="hero-row">
+          <span class="vert vert-flip">~ FROM TREE TO TIN ~</span>
+          <div class="hero-wrap">
+              <div class="hero"><img src="assets/cashew.png" width="600" height="347" alt="A pile of whole roasted cashews"></div>
+              <in-icon class="badge" name="badge" label="SMOKED ON PURPOSE" heat="1" size="104" accent="#AC3A12" aria-hidden="true"></in-icon>
+              <span class="sr-only">Heat level 1 of 3, mild</span>
+          </div>
+          <span class="vert">~ NUTS WITH A TEMPER ~</span>
         </div>
-        <div class="account">
-          <img src="assets/account_circle-24px.svg" alt="account" />
+        <p class="net-wt">NET WT 6 OZ (170g)</p>
+        <button type="button" class="cta" data-sku="chipotle-cashew-6oz">
+          <span class="cta-label">ADD TO CART</span>
+          <span class="cta-price">$12</span>
+          <span class="cta-unit">PER TIN</span>
+        </button>
+      </section>
+
+      <section class="col-right">
+        <h2>The Good Stuff</h2>
+        <ul class="goods">
+          <li><in-icon name="cashew" size="44" accent="#E0562A" aria-hidden="true"></in-icon><span>CASHEWS</span></li>
+          <li><in-icon name="chipotle" size="44" accent="#E0562A" aria-hidden="true"></in-icon><span>CHIPOTLE</span></li>
+          <li><in-icon name="honey" size="44" accent="#E0562A" aria-hidden="true"></in-icon><span>RAW HONEY</span></li>
+          <li><in-icon name="garlic" size="44" accent="#E0562A" aria-hidden="true"></in-icon><span>GARLIC</span></li>
+          <li><in-icon name="salt" size="44" accent="#E0562A" aria-hidden="true"></in-icon><span>SEA SALT</span></li>
+        </ul>
+        <p class="also"><strong>We're up in here too:</strong><br>Rice bran oil, cane sugar, smoked paprika. That's it.</p>
+        <hr>
+        <p class="social-line">Just like our nuts, our social is toasted:<br><a href="https://instagram.com/intensenut">@intensenut</a></p>
+        <div class="social">
+          <a href="https://instagram.com/intensenut" aria-label="Intense Nut on Instagram"><in-icon name="instagram" size="32" accent="#E0562A" aria-hidden="true"></in-icon></a>
+          <a href="https://facebook.com/intensenut" aria-label="Intense Nut on Facebook"><in-icon name="facebook" size="32" accent="#E0562A" aria-hidden="true"></in-icon></a>
         </div>
-        <div class="shopping">
-          <img src="assets/shopping_cart-24px.svg" alt="shopping" />
-        </div>
-      </div>
-    </header>
-    <div class="container">
-      <div class="product-photo">
-        <img src="assets/shape-blank-bag-alpha.png" alt="bag of nuts" />
-      </div>
-      <div class="product-name">
-        <div class="nut-type">Cashews</div>
-        <div class="nut-name">Thick & Curly</div>
-        <div class="nut-description">
-          One of our top sellers, this intense nut packs a punch. Notes of lime
-          with a salty finish. Sure to keep you satisfied until your next nut.
-        </div>
-      </div>
-      <div class="taste-profile">
-        <img src="" />
-        <div class="sub-text">taste</div>
-        <div class="taste-description">Zesty</div>
-      </div>
-      <div class="flavor-intensity">
-        <img src="" />
-        <div class="intensity-sub-text">intensity</div>
-        <div class="intensity-description">medium</div>
-      </div>
-      <div class="quantity">
-        <div class="amount">
-          <span class="number">2</span> x <span class="bags">Bags</span>
-        </div>
-        <div class="package-size">12 oz./pack</div>
-      </div>
-      <div class="price">
-        <div class="total-price">$36.00</div>
-        <div class="price-per">$17.50/pack</div>
-      </div>
-      <div class="add-to-cart-cta">
-        <div class="cart-cta">add to cart</div>
-        <div class="more-details-cta">more details</div>
-      </div>
+      </section>
+
     </div>
-  </body>
+    <div class="rule-bottom" aria-hidden="true"><i class="thin"></i><i class="perf"></i><i></i></div>
+  </article>
+
+  <article class="card" data-flavor="peanut" hidden>
+    <div class="rule-top" aria-hidden="true"><i></i><i class="perf"></i><i class="thin"></i></div>
+    <div class="columns">
+
+      <section class="col-left">
+        <h2>The Wok-Fired Snack</h2>
+        <p>No origin story, no founder's journey. Redskin peanuts wok-fired with bird's eye chili, makrut lime and a serious hit of garlic. Sour, salty, hot, in that order, then all at once.</p>
+        <p class="deep">If your eyes water a little, that's the peanuts working as intended.</p>
+      </section>
+
+      <section class="col-center">
+        <h1>Intense Nut</h1>
+        <p class="product-name">Thai Peanut</p>
+        <div class="hero-row">
+          <span class="vert vert-flip">~ FROM TREE TO TIN ~</span>
+          <div class="hero-wrap">
+              <div class="hero"><img src="assets/peanut.png" width="600" height="240" alt="A scattering of redskin peanuts"></div>
+              <in-icon class="badge" name="badge" label="HOT OFF THE WOK" heat="3" size="104" accent="#4A6314" aria-hidden="true"></in-icon>
+              <span class="sr-only">Heat level 3 of 3, hottest</span>
+          </div>
+          <span class="vert">~ NUTS WITH A TEMPER ~</span>
+        </div>
+        <p class="net-wt">NET WT 6 OZ (170g)</p>
+        <button type="button" class="cta" data-sku="thai-peanut-6oz">
+          <span class="cta-label">ADD TO CART</span>
+          <span class="cta-price">$12</span>
+          <span class="cta-unit">PER TIN</span>
+        </button>
+      </section>
+
+      <section class="col-right">
+        <h2>The Good Stuff</h2>
+        <ul class="goods">
+          <li><in-icon name="peanut" size="44" accent="#6E8B1F" aria-hidden="true"></in-icon><span>PEANUTS</span></li>
+          <li><in-icon name="thaichili" size="44" accent="#6E8B1F" aria-hidden="true"></in-icon><span>BIRD'S EYE</span></li>
+          <li><in-icon name="lime" size="44" accent="#6E8B1F" aria-hidden="true"></in-icon><span>MAKRUT LIME</span></li>
+          <li><in-icon name="garlic" size="44" accent="#6E8B1F" aria-hidden="true"></in-icon><span>GARLIC</span></li>
+          <li><in-icon name="salt" size="44" accent="#6E8B1F" aria-hidden="true"></in-icon><span>SEA SALT</span></li>
+        </ul>
+        <p class="also"><strong>We're up in here too:</strong><br>Rice bran oil, cane sugar, citric acid. Nothing you can't pronounce.</p>
+        <hr>
+        <p class="social-line">Just like our nuts, our social is toasted:<br><a href="https://instagram.com/intensenut">@intensenut</a></p>
+        <div class="social">
+          <a href="https://instagram.com/intensenut" aria-label="Intense Nut on Instagram"><in-icon name="instagram" size="32" accent="#6E8B1F" aria-hidden="true"></in-icon></a>
+          <a href="https://facebook.com/intensenut" aria-label="Intense Nut on Facebook"><in-icon name="facebook" size="32" accent="#6E8B1F" aria-hidden="true"></in-icon></a>
+        </div>
+      </section>
+
+    </div>
+    <div class="rule-bottom" aria-hidden="true"><i class="thin"></i><i class="perf"></i><i></i></div>
+  </article>
+
+  <article class="card" data-flavor="macadamia" hidden>
+    <div class="rule-top" aria-hidden="true"><i></i><i class="perf"></i><i class="thin"></i></div>
+    <div class="columns">
+
+      <section class="col-left">
+        <h2>The Volcano-Grade Snack</h2>
+        <p>Macadamias don't need help. They get it anyway: toasted coconut, honey, and a habanero glaze that shows up about three seconds after you've decided it won't. Buttery first. Fire later.</p>
+        <p class="deep">Tastes like a vacation where something goes slightly wrong.</p>
+      </section>
+
+      <section class="col-center">
+        <h1>Intense Nut</h1>
+        <p class="product-name">Island Fire Macadamia</p>
+        <div class="hero-row">
+          <span class="vert vert-flip">~ FROM TREE TO TIN ~</span>
+          <div class="hero-wrap">
+              <div class="hero"><img src="assets/macadamia.png" width="600" height="289" alt="A heap of whole macadamia nuts"></div>
+              <in-icon class="badge" name="badge" label="BORN ON A VOLCANO" heat="2" size="104" accent="#8F4B0A" aria-hidden="true"></in-icon>
+              <span class="sr-only">Heat level 2 of 3, medium</span>
+          </div>
+          <span class="vert">~ NUTS WITH A TEMPER ~</span>
+        </div>
+        <p class="net-wt">NET WT 6 OZ (170g)</p>
+        <button type="button" class="cta" data-sku="island-fire-macadamia-6oz">
+          <span class="cta-label">ADD TO CART</span>
+          <span class="cta-price">$12</span>
+          <span class="cta-unit">PER TIN</span>
+        </button>
+      </section>
+
+      <section class="col-right">
+        <h2>The Good Stuff</h2>
+        <ul class="goods">
+          <li><in-icon name="macadamia" size="44" accent="#C96F17" aria-hidden="true"></in-icon><span>MACADAMIAS</span></li>
+          <li><in-icon name="coconut" size="44" accent="#C96F17" aria-hidden="true"></in-icon><span>COCONUT</span></li>
+          <li><in-icon name="honey" size="44" accent="#C96F17" aria-hidden="true"></in-icon><span>HONEY</span></li>
+          <li><in-icon name="thaichili" size="44" accent="#C96F17" aria-hidden="true"></in-icon><span>HABANERO</span></li>
+          <li><in-icon name="salt" size="44" accent="#C96F17" aria-hidden="true"></in-icon><span>SEA SALT</span></li>
+        </ul>
+        <p class="also"><strong>We're up in here too:</strong><br>Cane sugar, lime juice, sea salt flakes. Sunscreen not included.</p>
+        <hr>
+        <p class="social-line">Just like our nuts, our social is toasted:<br><a href="https://instagram.com/intensenut">@intensenut</a></p>
+        <div class="social">
+          <a href="https://instagram.com/intensenut" aria-label="Intense Nut on Instagram"><in-icon name="instagram" size="32" accent="#C96F17" aria-hidden="true"></in-icon></a>
+          <a href="https://facebook.com/intensenut" aria-label="Intense Nut on Facebook"><in-icon name="facebook" size="32" accent="#C96F17" aria-hidden="true"></in-icon></a>
+        </div>
+      </section>
+
+    </div>
+    <div class="rule-bottom" aria-hidden="true"><i class="thin"></i><i class="perf"></i><i></i></div>
+  </article>
+
+</main>
+
+<footer>SMALL BATCH &middot; SEATTLE WA &middot; CONTAINS TREE NUTS, OBVIOUSLY</footer>
+
+</body>
 </html>
