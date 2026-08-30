@@ -12,6 +12,13 @@ It's static. Any file server will do:
 
 Then open http://localhost:8000.
 
+## Share previews
+
+The Open Graph tags point at `https://intensenut.com`, so previews only resolve
+once that domain serves the site over HTTPS. Scrapers cache aggressively: if a
+link is shared before the certificate is live, the failed fetch can stick. Force
+a refresh with Facebook's Sharing Debugger and LinkedIn's Post Inspector.
+
 ## Deploying
 
 Upload the repo root as-is to any static host (Netlify, Cloudflare Pages, S3,
@@ -60,10 +67,6 @@ each one is paired with an `.sr-only` span stating it.
 only log it. Point the handler at the bottom of `app.js` at whatever store you end
 up using. The nav's cart control is `disabled` and its count is hardcoded to 0.
 Drop the attribute and update `.cart-count` once there's a real cart behind it.
-
-`og:image` in `index.html` is a relative path. Open Graph wants an absolute URL,
-so make it `https://yourdomain/assets/social-card.jpg` once the domain is
-settled, or link previews may come back with no image.
 
 The instagram.com and facebook.com links are guesses at the real handles. Check
 them before launch.
