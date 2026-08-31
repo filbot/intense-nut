@@ -5,7 +5,6 @@
   const FLAME_BODY = "M269.87,636.45l-9.85.55.1-1.42c.14-.7,46.02-7,79.37-42.94,36.84-39.69,37.97-94.16,16.22-143.07-2.66,29.46-11.49,64.25-32.02,87.13,7.6-51.22-4.35-86.6-34.49-125.95-34.12-44.55-62.98-76.08-63.45-137.83-21.78,11.53-36.86,28.84-47.05,49.79-22.38,47.56-19.84,106.77-2.33,156.48-5.64-3.69-9.75-7.95-13.73-12.88-11.85-14.64-21.91-30.2-26.61-49.37-44.53,57.52-26.48,140.77,24.46,187.48,14.11,12.58,29.65,21.98,47.72,27.41l1.72,1.53c-63.19-8.9-118.22-49.31-154.67-101.68C24.08,486.9,5.84,434.62,2,380.2c-.3-4.27.13-8.27-.34-12.06-.7-5.66-.25-10.48.03-16.17l.63-12.92c5.26-51.84,28.14-99.79,60.78-141.91,4.22,29.85,8.82,69.24,32.54,86.05l.86.8c.21.23,1.07-.17,1.28-.38s.03-.33-.21-.67c-7.33-70.83,10.2-134.34,58.87-187.49C196.24,51.98,253.11,20.38,309.42.42c-34.67,46.16-31.34,91.88-11.76,142.91,7.55,17.72,15.23,34.5,24.63,51.39l34.67,62.28c18.72,35.42,35.03,69.04,39.83,110.08,26.67-46.8,33.55-98.69,36.52-151.72,28.79,45.63,43.98,97.88,45.85,151.46l.42,12.13-.54,16.14c-1.09,32.88-7.87,64.59-19.58,95.3-31.52,82.67-100.67,141.13-189.58,146.06Z";
   const FLAME_INNER = "M260.31,637h-28.01s-5.59-1.32-5.59-1.32l-16.51-2.33-1.72-1.53c-18.07-5.43-33.6-14.83-47.72-27.41-50.94-46.71-68.99-129.95-24.46-187.48,4.7,19.16,14.76,34.73,26.61,49.37,3.99,4.92,8.09,9.19,13.73,12.88-17.51-49.71-20.05-108.92,2.33-156.48,10.19-20.95,25.28-38.26,47.05-49.79.47,61.75,29.33,93.29,63.45,137.83,30.14,39.35,42.09,74.73,34.49,125.95,20.53-22.89,29.37-57.67,32.02-87.13,21.75,48.9,20.61,103.37-16.22,143.07-33.35,35.94-79.23,42.24-79.37,42.94l-.1,1.42Z";
   const FLAME_FIT = "translate(11.935,7.008) scale(0.050178)";
-  const FLAME_STROKE = 60;
   const esc = v => String(v).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[ch]);
   // Chipotle pod, drawn at 1024x1536; the transform in ICONS.chipotle fits it
   // to the 48x48 icon box. Body takes the ink, stem takes the accent.
@@ -71,7 +70,10 @@
     facebook(c){ return `<path transform="translate(2.435,2.074) scale(0.267559)" d="${FACEBOOK_MARK}" fill="${c.ink}"/>`; }
   };
   // heat = how many of the three flames are lit, 1 (mild) to 3 (hottest).
-  // The rest are drawn as outlines so the scale reads on its own.
+  // The rest are the same shape filled flat at 0.3, so an unlit flame matches a
+  // lit one exactly in size; a stroke sat half outside the path and read larger.
+  // Body and inner are both inked and the group carries the alpha, so the two
+  // fills flatten together and the inner flame's hole does not show through.
   function badge(c, label, heat){
     const n = Math.min(3, Math.max(1, parseInt(heat, 10) || 1));
     const s = 0.7, fw = 24 * s, gap = 4, span = 3 * fw + 2 * gap;
@@ -81,7 +83,7 @@
       const open = `<g transform="translate(${x.toFixed(2)},${(60 - 23 * s).toFixed(2)}) scale(${s})">`;
       flames += i < n
         ? `${open}<g transform="${FLAME_FIT}"><path d="${FLAME_BODY}" fill="${c.ink}"/><path d="${FLAME_INNER}" fill="${c.accent}"/></g></g>`
-        : `${open}<g transform="${FLAME_FIT}"><path d="${FLAME_BODY}" fill="none" stroke="${c.ink}" stroke-width="${FLAME_STROKE}" opacity="0.3"/></g></g>`;
+        : `${open}<g transform="${FLAME_FIT}" opacity="0.3"><path d="${FLAME_BODY}" fill="${c.ink}"/><path d="${FLAME_INNER}" fill="${c.ink}"/></g></g>`;
     }
     // Two explicit half-arcs (a near-zero chord leaves the circle centre ambiguous).
     // Starts bottom centre, clockwise via the left, so 50% along is top centre.
