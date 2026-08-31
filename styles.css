@@ -85,13 +85,14 @@ a:hover { color: var(--ink); }
   width: 100%;
   max-width: 1160px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 12px;
 }
 
 .flavors {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -117,7 +118,6 @@ a:hover { color: var(--ink); }
 }
 
 .cart {
-  margin-left: auto;
   font-family: inherit;
   font-size: 10px;
   letter-spacing: 0.16em;
@@ -330,6 +330,13 @@ footer {
 
 /* ---- mobile: one column, product first ---- */
 
+/* At 320px the three tabs need 266px of a 265px row, so tighten the gap rather
+   than let MACADAMIA wrap onto a second line. */
+
+@media (max-width: 400px) {
+  .flavors { gap: 12px; }
+}
+
 @media (max-width: 900px) {
   .card { max-width: 460px; padding: 18px 24px 24px; }
   .nav { max-width: 460px; }
@@ -345,19 +352,6 @@ footer {
   .hero-row { gap: 10px; }
   .hero { width: 220px; height: 220px; }
   .hero-wrap .badge { top: -4px; right: 2px; transform: scale(0.75); }
-}
-
-/* Below this the three tabs and the cart can no longer share a line (they need
-   351px and a 390px phone offers 350). The tabs take the row and spread across
-   it; the cart drops beneath, still right-aligned to the card edge. */
-
-@media (max-width: 480px) {
-  .nav { gap: 10px 0; }
-  .flavors {
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
