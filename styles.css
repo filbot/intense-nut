@@ -314,17 +314,19 @@ hr {
 }
 
 .also, .social-line { font-size: 12px; }
+.small-batch { font-size: 10px; letter-spacing: 0.2em; opacity: 0.75; }
 .also strong { font-weight: 600; }
 
-.social { display: flex; gap: 14px; }
+.social { display: flex; justify-content: center; gap: 14px; }
 .social a { line-height: 0; }
 
 /* ---- footer ---- */
 
 footer {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  opacity: 0.75;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   text-align: center;
 }
 
