@@ -281,6 +281,15 @@ hr {
   transform: rotate(0deg) scale(1.04);
   background: rgba(31, 29, 26, 0.04);
 }
+.cta[disabled] {
+  cursor: not-allowed;
+  border-style: solid;
+  opacity: 0.55;
+}
+.cta[disabled]:hover {
+  transform: rotate(-8deg);
+  background: transparent;
+}
 .cta-label { font-size: 10px; letter-spacing: 0.2em; }
 .cta-price {
   font-family: var(--sans);

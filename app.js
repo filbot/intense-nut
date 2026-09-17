@@ -19,8 +19,10 @@
     t.addEventListener('click', function () { show(t.dataset.flavor); });
   });
 
-  // ponytail: checkout isn't wired yet. Point this at the store's SDK
-  // (Shopify Buy Button, Stripe checkout) using the button's data-sku.
+  // ponytail: checkout isn't wired yet, and every flavor is currently sold
+  // out, so the buttons are disabled in the HTML. Drop the attribute and point
+  // this at the store's SDK (Shopify Buy Button, Stripe checkout) using the
+  // button's data-sku.
   document.querySelectorAll('.cta').forEach(function (btn) {
     btn.addEventListener('click', function () {
       console.log('add to cart:', btn.dataset.sku);

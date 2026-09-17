@@ -63,8 +63,12 @@ each one is paired with an `.sr-only` span stating it.
 
 ## Not done yet
 
-**Checkout isn't wired.** The ADD TO CART buttons carry a `data-sku` and currently
-only log it. Point the handler at the bottom of `app.js` at whatever store you end
+**Everything is sold out.** Each card's `.cta` button is `disabled` and labelled
+SOLD OUT. To put a flavor back on sale, drop the attribute and change the label
+back to ADD TO CART; `.cta[disabled]` in `styles.css` handles the muted look.
+
+**Checkout isn't wired.** The buttons carry a `data-sku` and currently only log it.
+Point the handler at the bottom of `app.js` at whatever store you end
 up using. The nav's cart control is `disabled` and its count is hardcoded to 0.
 Drop the attribute and update `.cart-count` once there's a real cart behind it.
 
